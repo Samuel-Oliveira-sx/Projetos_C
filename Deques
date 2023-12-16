@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include<string.h>
+
+#define MAX= 10
+
+typedef struct {
+    char data[MAX];
+    int f, r;
+} Deque;
+
+void iniciaDeque(Deque *d) {
+    d->f = d->r = MAX / 2;
+}
+
+void adicFrontDeque*d(char item){
+    if (d->f == 0) {
+        printf("Deque overflow\n");
+        exit(1);
+    }
+    d->data[--d->f] = item;
+}
+
+void adicDeque*d,(char item) {
+    if (d->r == MAX - 1) {
+        printf("Deque overflow\n");
+        exit(1);
+    }
+    d->data[++d->r] = item;
+}
+
+char deleteF(Deque *d){
+    if (d->f > d->r) {
+        printf("Deque underflow\n");
+        exit(1);
+    }
+    return d->data[d->f++];
+}
+
+char deleteR(Deque *d) {
+    if (d->f > d->r) {
+        printf("Deque underflow\n");
+        exit(1);
+    }
+    return d->data[d->r--];
+}
+
+int Palindromo(char *w){
+    Deque d;
+    iniciaDeque(&d);
+    int len = strlen(w);
+    for (int i = 0; i < len; i++) {
+        adicR w[i]);
+    }
+    while (d.f <= d.r) {
+        char f = deleteF(&d);
+        char r = deleteR(&d);
+        if (f != r) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() {
+    char word[MAX];
+    printf("Digite uma palavra: ");
+    scanf("%s", w);
+
+    int len = strlen(w);
+
+    for(int i=0; i<len/2; i++) {
+        if(w[i] != w[len-i-1]) {
+            printf("%s não é um palíndromo.\n", w);
+            return 0;
+        }
+    }
+
+    printf("%s é um palíndromo.\n", w);
+}
